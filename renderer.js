@@ -13,24 +13,23 @@ function startTimer() {
   var seconds = (+time[0]) * 60 + (+time[1]);
 
   setAllButtonsDisabled(true)
-  
+  let audio;
+
   if (time[0] === '25') {
     setGifFocus(true)
+    audio = document.getElementById('audio')
   } else {
     setGifFocus(false)
+    audio = document.getElementById('school-audio')
   }
-  
+
   globalInterval = setInterval(function() {
     seconds--;
     if (seconds >= 0) {
       element.setHTMLUnsafe(toTimeString(seconds));
     }
     if (seconds === 0) {
-      if (globalTime === 25) {
-        alert('Time for a break!');
-      } else {
-        alert('Time to work!');
-      }
+      audio.play();
       clearInterval(seconds);
       setAllButtonsDisabled(false)
       setGifFocus(false)
