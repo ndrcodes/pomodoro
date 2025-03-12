@@ -4,35 +4,48 @@
     <meta charset="UTF-8">
     <title>Pomodoro</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
-  <body>
+  <body id="body">
     <table>
-      <tr>
-        <td>
+      <tr class="">
+        <td colspan="2">
           <form>
-            <div>
-              <button class="btn-option" id="option-25m" type="button" value="25" onclick="updateCountDown(this.value)">
+            <div class="options">
+              <button class="btn-option focus" id="option-25m" type="button" value="25" onclick="updateCountDown(this.value, this.id)">
                 Focus
               </button>
-              <button class="btn-option" id="option-5m" type="button" value="1" onclick="updateCountDown(this.value)">
+              <button class="btn-option" id="option-5m" type="button" value="1" onclick="updateCountDown(this.value, this.id)">
                 Short Break
               </button>
-              <button class="btn-option" id="option-15m" type="button" value="15" onclick="updateCountDown(this.value)">
+              <button class="btn-option" id="option-15m" type="button" value="15" onclick="updateCountDown(this.value, this.id)">
                 Long Break
               </button>
             </div>
-            
+          </form>
+        </td>
+        
+        <td>
+          <img hidden id="focus-image" class="image-gif" src="./assets/focus.gif" alt="focus-image">
+          <img id="rest-image" class="image-gif" src="./assets/rest.gif" alt="rest-image">
+        </td>
+
+        <td colspan="4" id="time">25:00</td>
+
+        <td>
+          <div>
             <button class="btn" id="start" type="button"  onclick="startTimer()">
               Start
             </button>
-            <button class="btn" id="reset" type="button" onclick="stopTimer()">
-             Reset
+            <button disabled class="btn" id="reset" type="button" onclick="stopTimer()">
+            Reset
             </button>
-          </form>
+          </div>
         </td>
-        <td id="time">25:00</td>
       </tr>
     </table>
   </body>
   <script src="./renderer.js"></script>
 </html>
+
+<!-- GIF by <a href="https://pixabay.com/users/u_mey4kjj5ww-31374144/?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=2498">u_mey4kjj5ww</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=2498">Pixabay</a> -->

@@ -14,6 +14,12 @@ function startTimer() {
 
   setAllButtonsDisabled(true)
   
+  if (time[0] === '25') {
+    setGifFocus(true)
+  } else {
+    setGifFocus(false)
+  }
+  
   globalInterval = setInterval(function() {
     seconds--;
     if (seconds >= 0) {
@@ -27,6 +33,7 @@ function startTimer() {
       }
       clearInterval(seconds);
       setAllButtonsDisabled(false)
+      setGifFocus(false)
       updateCountDown(globalTime)
     }
   }, 1000);
@@ -37,20 +44,42 @@ function stopTimer() {
   clearInterval(globalInterval);
   element.setHTMLUnsafe(toTimeString(globalTime*60));
   setAllButtonsDisabled(false)
+  setGifFocus(false)
 }
 
-function updateCountDown(timeInMinutes) {
+function updateCountDown(timeInMinutes, id) {
   var nextElem = document.getElementById('time')
   nextElem.setHTMLUnsafe(toTimeString(timeInMinutes*60));
   globalTime = timeInMinutes
+  
+  var body = document.getElementById('time')
+  if (id.includes('25')) {
+    document.body.style.backgroundColor = 'rgb(186, 90, 90)';
+  } else if (id.includes('15')) {
+    document.body.style.backgroundColor = 'rgb(66, 117, 153)';
+  } else {
+    document.body.style.backgroundColor = 'rgb(67, 134, 138)';
+  }
 }
 
 function setAllButtonsDisabled(disable) {
   document.getElementById("start").disabled = disable;
+  document.getElementById("start").style.color = disable ? 'gray' : 'white';
+  document.getElementById("start").style.backgroundColor = disable ? 'lightgray' : 'rgb(67, 134, 138)';
+  document.getElementById("start").style.cursor = disable ? 'not-allowed' : 'pointer';
+
   const allOptionButton = document.querySelectorAll(".btn-option")
   for (let i = 0; i < allOptionButton.length; i++) {
     allOptionButton[i].disabled = disable;
+    allOptionButton[i].style.color = disable ? 'gray' : 'white';
+    allOptionButton[i].style.backgroundColor = disable ? 'lightgray' : 'rgb(67, 134, 138)';
+    allOptionButton[i].style.cursor = disable ? 'not-allowed' : 'pointer';
   }
 
-  document.getElementById("reset").disabled = !disable;
+  document.getElementById("reset").disabled = !disable;  
+}
+
+function setGifFocus(status) {
+  document.getElementById("focus-image").hidden = !status;
+  document.getElementById("rest-image").hidden = status;
 }
