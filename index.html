@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <title>Pomodoro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <table>
+      <tr>
+        <td>
+          <form>
+            <div>
+              <button class="btn-option" id="option-25m" type="button" value="25" onclick="updateCountDown(this.value)">
+                Focus
+              </button>
+              <button class="btn-option" id="option-5m" type="button" value="1" onclick="updateCountDown(this.value)">
+                Short Break
+              </button>
+              <button class="btn-option" id="option-15m" type="button" value="15" onclick="updateCountDown(this.value)">
+                Long Break
+              </button>
+            </div>
+            
+            <button class="btn" id="start" type="button"  onclick="startTimer()">
+              Start
+            </button>
+            <button class="btn" id="reset" type="button" onclick="stopTimer()">
+             Reset
+            </button>
+          </form>
+        </td>
+        <td id="time">25:00</td>
+      </tr>
+    </table>
   </body>
+  <script src="./renderer.js"></script>
 </html>
