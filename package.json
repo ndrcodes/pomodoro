@@ -1,0 +1,14 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^35.0.1"
+  }
+}
