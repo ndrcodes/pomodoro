@@ -64,14 +64,22 @@ function updateCountDown(timeInMinutes, id) {
 function setAllButtonsDisabled(disable) {
   document.getElementById("start").disabled = disable;
   document.getElementById("start").style.color = disable ? 'gray' : 'white';
-  document.getElementById("start").style.backgroundColor = disable ? 'lightgray' : 'rgb(67, 134, 138)';
+  document.getElementById("start").style.backgroundColor = disable ? 'lightgray' : 'rgb(81, 196, 109)';
   document.getElementById("start").style.cursor = disable ? 'not-allowed' : 'pointer';
 
   const allOptionButton = document.querySelectorAll(".btn-option")
+  let colorBtn;
   for (let i = 0; i < allOptionButton.length; i++) {
+    if (allOptionButton[i].id.includes('25')) {
+      colorBtn = 'rgb(186, 90, 90)'
+    } else if (allOptionButton[i].id.includes('15')) {
+      colorBtn = 'rgb(66, 117, 153)'
+    } else {
+      colorBtn = 'rgb(67, 134, 138)'
+    }
     allOptionButton[i].disabled = disable;
     allOptionButton[i].style.color = disable ? 'gray' : 'white';
-    allOptionButton[i].style.backgroundColor = disable ? 'lightgray' : 'rgb(67, 134, 138)';
+    allOptionButton[i].style.backgroundColor = disable ? 'lightgray' : colorBtn;
     allOptionButton[i].style.cursor = disable ? 'not-allowed' : 'pointer';
   }
 
